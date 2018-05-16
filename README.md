@@ -72,3 +72,43 @@
 	});
 	var b = new B();
 	console.log(b.say()); //我有3个apple
+	
+##### 题目4
+const HardMan = (name) => {
+	class HardMan {
+		contructor (name) {
+			this.tasks = [this.init(name)]
+			setTimeout(async () => {
+				for (const task of this.tasks) {
+					await task()
+				}
+			}, 0)
+		}
+		init (name) {
+			return () => console.log(`I am ${name}`)
+		}
+
+		sleep (time) {
+			return () => new Promise(
+				resolve => setTimeout( () => {
+					resolve(console.log(`Start learning after ${time} seconds` ))
+				}, time * 1000),
+			)
+		}
+		rest (time) {
+			this.tasks.push(this.sleep(time))
+			return this
+		}
+		restFirst (time) {
+			this.tasks.unshift(this.sleep(time))
+			return this
+		}
+		learn (skill) {
+			this.tasks.push(() => {
+				console.log(`Learning ${sth}`)
+			})
+			return this
+		}
+		return new HardMan(name)
+	}
+}
