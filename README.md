@@ -74,7 +74,7 @@
 	console.log(b.say()); //我有3个apple
 	
 ##### 题目4
-const HardMan = (name) => {
+	const HardMan = (name) => {
 	class HardMan {
 		contructor (name) {
 			this.tasks = [this.init(name)]
